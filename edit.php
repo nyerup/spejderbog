@@ -63,11 +63,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$last_img = '';
 		foreach ($_FILES['files']['tmp_name'] as $index => $name) {
 			$top_index = $index;
+
 			$image = imagecreatefromstring(file_get_contents($name));
 			if ($image === false) {
 				continue;
 			}
+
 			$image = imagerotate($image, array_values([0, 0, 0, 180, 0, 0, -90, 0, 90])[@exif_read_data($name)['Orientation'] ?: 0], 0);
+			if (imagesx($image) > 1000) {
+				$image = imagescale($image, 1000);
+			}
+
 			foreach (range(0, 1000000) as $number) {
 				if (!file_exists("img/img$number.jpg")) {
 					imagejpeg($image, "img/img$number.jpg");
