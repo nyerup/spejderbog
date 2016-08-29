@@ -63,17 +63,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$last_img = '';
 		foreach ($_FILES['files']['tmp_name'] as $index => $name) {
 			$top_index = $index;
-			if (getimagesize($name) === false) {
+			$image = imagecreatefromstring(file_get_contents($name));
+			if ($image === false) {
 				continue;
 			}
-			if ($_FILES['files']['size'][$index] > 10*1024*1024) {
-				die('Filen ' . $_FILES['files']['name'][$index] . ' var for stor.');
-			}
-			$ext = pathinfo($_FILES['files']['name'][$index], PATHINFO_EXTENSION);
+			$image = imagerotate($image, array_values([0, 0, 0, 180, 0, 0, -90, 0, 90])[@exif_read_data($name)['Orientation'] ?: 0], 0);
 			foreach (range(0, 1000000) as $number) {
-				if (!file_exists("img/img$number.$ext")) {
-					move_uploaded_file($name, "img/img$number.$ext");
-					$last_img = "img$number.$ext";
+				if (!file_exists("img/img$number.jpg")) {
+					imagejpeg($image, "img/img$number.jpg");
+					$last_img = "img$number.jpg";
 					break;
 				}
 			}
