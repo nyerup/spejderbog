@@ -1,0 +1,126 @@
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 10pt;
+	margin: 0;
+	padding: 0;
+}
+div#container {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3 {
+	clear: both;
+	padding-top: 1em;
+	margin-left: 3px;
+}
+ul.list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+ul.list li {
+	position: relative;
+	float: left;
+	height: 200px;
+	width: 300px;
+	padding: 6px;
+	margin: 3px;
+	page-break-inside: avoid !important;
+}
+ul.list li .img {
+	height: 100%;
+	width: 50%;
+	overflow: hidden;
+	float: left;
+}
+ul.list li .img img {
+	height: 100%;
+}
+ul.list li dl, table {
+	width: 40%;
+	overflow: hidden;
+	padding-left: .2em;
+}
+ul.list li dl dt {
+	float: left;
+	clear: left;
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+ul.list li dl dd {
+	float: left;
+	margin: 0 0 0 .2em;
+	padding: 0;
+}
+input[type=text] {
+	float: right;
+	clear: both;
+}
+th {
+	padding-top: 5px;
+	vertical-align: top;
+}
+a, input[type=submit], select {
+	font-size: 60%;
+	color: #333;
+	text-decoration: none;
+}
+a:hover {
+	color: #111;
+	text-decoration: underline;
+}
+ul.list li a, input[type=submit] {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+}
+input[name=delete] {
+	right: 50px;
+}
+label {
+	margin-left: 3px;
+}
+@media print {
+	body {
+		font-family: Garamond, Serif;
+	}
+	section {
+		page-break-inside: avoid;
+	}
+	ul.list li {
+		width: 30%;
+		height: 120pt;
+		margin-bottom: 6pt;
+	}
+	ul.list li dl dt:nth-child(n+7) {
+		visibility: hidden;
+	}
+	ul.list li dl dd:nth-child(n+7) {
+		visibility: hidden;
+	}
+	ul.list li a {
+		visibility: hidden;
+	}
+	input, select {
+		visibility: hidden;
+	}
+}
+
+@media screen {
+	ul.list li {
+		border: 1px #aaa solid;
+		background-color: #ddd;
+		height: 200px;
+		width: 300px;
+	}
+	section, section * {
+		page-break-inside: avoid !important;
+	}
+	section * {
+		page-break-before: avoid !important;
+		page-break-after: avoid !important;
+	}
+}
