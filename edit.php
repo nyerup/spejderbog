@@ -156,18 +156,18 @@ if (!in_array('tom.png', $unused)) {
 	<body>
 		<form method="POST" enctype="multipart/form-data">
 		<div id="container">
-		<h1><? print $overskrift; ?></h1>
-			<input type="hidden" name="id" value="<? print $id ?>">
-			<input id="billede" type="hidden" name="billede" value="<? print $billede ?>">
+		<h1><? echo $overskrift; ?></h1>
+			<input type="hidden" name="id" value="<? echo htmlspecialchars($id); ?>">
+			<input id="billede" type="hidden" name="billede" value="<? echo htmlspecialchars($billede); ?>">
 			<ul class="list" id="list">
 				<li style="height: 300px; width: 500px">
-					<div class="img"><img id="active" src="img/<? print $billede ?>"></div>
+					<div class="img"><img id="active" src="img/<? echo htmlspecialchars($billede); ?>"></div>
 					<table>
-						<tr><th>Navn: </th><td><input type="text" name="fornavn" value="<? print $fornavn ?>"><input type="text" name="efternavn" value="<? print $efternavn ?>"></td></tr>
-						<tr><th>Patrulje: </th><td><input type="text" name="patrulje" value="<? print $patrulje ?>"></td></tr>
-						<tr><th>Spejdernavn: </th><td><input type="text" name="spejdernavn" value="<? print $spejdernavn ?>"></td></tr>
-						<tr><th>Skole: </th><td><input type="text" name="skole" value="<? print $skole ?>"></td></tr>
-						<tr><th>Klasse: </th><td><input type="text" name="klasse" value="<? print $klasse ?>"></td></tr>
+						<tr><th>Navn: </th><td><input type="text" name="fornavn" value="<? echo htmlspecialchars($fornavn); ?>"><input type="text" name="efternavn" value="<? echo htmlspecialchars($efternavn); ?>"></td></tr>
+						<tr><th>Patrulje: </th><td><input type="text" name="patrulje" value="<? echo htmlspecialchars($patrulje); ?>"></td></tr>
+						<tr><th>Spejdernavn: </th><td><input type="text" name="spejdernavn" value="<? echo htmlspecialchars($spejdernavn); ?>"></td></tr>
+						<tr><th>Skole: </th><td><input type="text" name="skole" value="<? echo htmlspecialchars($skole); ?>"></td></tr>
+						<tr><th>Klasse: </th><td><input type="text" name="klasse" value="<? echo htmlspecialchars($klasse); ?>"></td></tr>
 					</table>
 					<input name="delete" type="submit" value="Slet">
 					<input name="save" type="submit" value="Gem">
@@ -183,7 +183,7 @@ if (!in_array('tom.png', $unused)) {
 <?php
 	foreach ($unused as $image) {
 ?>
-	<img  src="img/<? print $image; ?>" style="height: 200px; cursor: pointer; cursor: hand;" onclick="document.getElementById('billede').value = '<? print $image ?>';document.getElementById('active').src = 'img/<? print $image ?>';" title="<? print $image; ?>">
+	<img  src="img/<? echo htmlspecialchars($image); ?>" style="height: 200px; cursor: pointer; cursor: hand;" onclick="document.getElementById('billede').value = '<? echo htmlspecialchars($image); ?>';document.getElementById('active').src = 'img/<? echo htmlspecialchars($image); ?>';" title="<? echo htmlspecialchars($image); ?>">
 <?php
 	}
 ?>

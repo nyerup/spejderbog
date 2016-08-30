@@ -81,21 +81,21 @@ foreach ($spejdere as $spejder) {
 	}
 ?>
 			<li>
-				<div class="img"><img src="img/<? print $spejder->billede ?>"></div>
+				<div class="img"><img src="img/<? echo htmlspecialchars($spejder->billede); ?>"></div>
 				<dl>
 					<dt>Navn:&nbsp;</dt>
-					<dd><? print $spejder->fornavn . " " . $spejder->efternavn; ?> </dd>
+					<dd><? echo htmlspecialchars($spejder->fornavn), ' ', htmlspecialchars($spejder->efternavn); ?> </dd>
 					<dt>Patrulje:&nbsp;</dt>
-					<dd><? print $spejder->patrulje; ?> </dd>
+					<dd><? echo htmlspecialchars($spejder->patrulje); ?> </dd>
 					<dt>Spejdernavn:&nbsp;</dt>
-					<dd><? print $spejder->spejdernavn; ?> </dd>
+					<dd><? echo htmlspecialchars($spejder->spejdernavn); ?> </dd>
 					<dt>Skole:&nbsp;</dt>
-					<dd><? print $spejder->skole; ?> </dd>
+					<dd><? echo htmlspecialchars($spejder->skole); ?> </dd>
 					<dt>Klasse:&nbsp;</dt>
-					<dd><? print $spejder->klasse; ?> </dd>
+					<dd><? echo htmlspecialchars($spejder->klasse); ?> </dd>
 				</dl>
 				<form method="get" action="edit.php">
-					<input type="hidden" name="id" value="<? print $spejder->id; ?>">
+					<input type="hidden" name="id" value="<? echo htmlspecialchars($spejder->id); ?>">
 					<input type="submit" value="Redigér">
 				</form>
 			</li>
