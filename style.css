@@ -72,7 +72,7 @@ a:hover {
 	color: #111;
 	text-decoration: underline;
 }
-ul.list li a, input[type=submit] {
+ul.list li a, ul.list li input[type=submit] {
 	position: absolute;
 	bottom: 5px;
 	right: 5px;
