@@ -75,9 +75,7 @@ foreach ($spejdere as $spejder) {
 	if ($headers) {
 		if ($last_header != $spejder->{$sort_field}) {
 			$last_header = $spejder->{$sort_field};
-?>
-		<h1><? print $spejder->{$sort_field}; ?></h1>
-<?php
+			printf("\t\t\t<h1>%s</h1>\n", $spejder->{$sort_field});
 		}
 	}
 ?>
