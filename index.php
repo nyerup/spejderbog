@@ -56,7 +56,8 @@ usort($spejdere, function($a, $b) use ($sort_field) {
 		<title>Spejderbog</title>
 	</head>
 	<body>
-		<form method="get" action="edit.php?id=new">
+		<form method="get" action="edit.php">
+			<input type="hidden" name="id" value="new">
 			<input type="submit" value="Ny spejder" style="position: absolute; top: 25px; right: 5px; z-index: 1;">
 		</form>
 		<form method="get">
