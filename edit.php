@@ -160,7 +160,7 @@ if (!in_array('tom.png', $unused)) {
 			<input type="hidden" name="id" value="<? echo htmlspecialchars($id); ?>">
 			<input id="billede" type="hidden" name="billede" value="<? echo htmlspecialchars($billede); ?>">
 			<ul class="list" id="list">
-				<li style="height: 300px; width: 500px">
+				<li style="height: 300px; width: 600px;">
 					<div class="img"><img id="active" src="img/<? echo htmlspecialchars($billede); ?>"></div>
 					<table>
 						<tr><th>Navn: </th><td><input type="text" name="fornavn" value="<? echo htmlspecialchars($fornavn); ?>"><input type="text" name="efternavn" value="<? echo htmlspecialchars($efternavn); ?>"></td></tr>
