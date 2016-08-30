@@ -18,3 +18,16 @@ Det kunne være sjovt en dag at lave:
 
 * Integration med Blåt Medlem.
 * Et udseende, som ikke er faldet ned fra 90'erne.
+
+## Eksempel
+
+Se en Spejderbog [her](https://jespernyerup.dk/spejderbog/). Du er velkommen til
+at redigere alt hvad du har lyst til. Når den bliver for rodet, tømmer jeg den
+for data, og starter forfra.
+
+## Installation
+
+Upload `index.php`, `edit.php` og mappen `img` (inklusive billedet `tom.png`,
+som ligger i den) til en webserver, som kan fortolke PHP. Det fungerer bedst med
+en nogenlunde nylig PHP-version, og har ikke behov for andet end libgd og
+sqlite, som er en del af de fleste PHP-installationer.
