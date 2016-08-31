@@ -34,9 +34,16 @@ ul.list li .img {
 	width: 50%;
 	overflow: hidden;
 	float: left;
+	position: relative;
 }
 ul.list li .img img {
 	height: 100%;
+	position: absolute;
+	top: -1000px;
+	bottom: -1000px;
+	left: -1000px;
+	right: -1000px;
+	margin: auto;
 }
 ul.list li dl, table {
 	width: 40%;
