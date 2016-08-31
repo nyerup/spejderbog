@@ -169,7 +169,7 @@ if (!in_array('tom.png', $unused)) {
 						<tr><th>Skole: </th><td><input type="text" name="skole" value="<? echo htmlspecialchars($skole); ?>"></td></tr>
 						<tr><th>Klasse: </th><td><input type="text" name="klasse" value="<? echo htmlspecialchars($klasse); ?>"></td></tr>
 					</table>
-					<input name="delete" type="submit" value="Slet">
+					<input name="delete" type="submit" value="Slet" style="right: 45px">
 					<input name="save" type="submit" value="Gem">
 				</li>
 			</ul>
