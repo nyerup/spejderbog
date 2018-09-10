@@ -13,6 +13,18 @@ $prereq = $db->query('
 		rolle int,
 		billede text
 	)');
+$prereq = $db->query('
+	CREATE TABLE IF NOT EXISTS afkrydsninger (
+		id integer primary key autoincrement,
+		tid integer
+	)');
+$prereq = $db->query('
+	CREATE TABLE IF NOT EXISTS spejderkryds (
+		id integer primary key autoincrement,
+		status integer,
+		afkrydsning_id integer REFERENCES afkrydsninger(id) ON DELETE CASCADE,
+		spejder_id integer REFERENCES spejdere(id) ON DELETE CASCADE
+	)');
 
 $result = $db->query('SELECT * FROM spejdere');
 $result->setFetchMode(PDO::FETCH_OBJ);
@@ -80,7 +92,7 @@ foreach ($spejdere as $spejder) {
 		}
 	}
 ?>
-			<li>
+			<li id="spejder<? echo htmlspecialchars($spejder->id); ?>" onclick="toggleColor('<? echo htmlspecialchars($spejder->id); ?>')">
 				<div class="img"><img src="img/<? echo htmlspecialchars($spejder->billede); ?>"></div>
 				<dl>
 					<dt>Navn:&nbsp;</dt>
@@ -102,5 +114,32 @@ foreach ($spejdere as $spejder) {
 <? } ?>
 		</ul>
 		</div>
+		<form method="post" action="attendance.php">
+<?php
+foreach ($spejdere as $spejder) {
+?>
+			<input type="hidden" name="status<? echo htmlspecialchars($spejder->id); ?>" id="status<? echo htmlspecialchars($spejder->id); ?>" value="0">
+<? } ?>
+			<input type="submit" value="Gem afkrydsning" style="position: absolute; top: 45px; right: 5px; z-index: 1;" id="attendbutton" disabled>
+		</form>
+		<script>
+			function toggleColor(id) {
+				document.getElementById('attendbutton').disabled = false;
+				switch (document.getElementById('status' + id).value) {
+				case "0":
+					document.getElementById('spejder' + id).style.backgroundColor = "#9D9";
+					document.getElementById('status' + id).value = "1";
+					break;
+				case "1":
+					document.getElementById('spejder' + id).style.backgroundColor = "#D99";
+					document.getElementById('status' + id).value = "2";
+					break;
+				case "2":
+					document.getElementById('spejder' + id).style.backgroundColor = "#DDD";
+					document.getElementById('status' + id).value = "0";
+					break;
+				}
+			}
+		</script>
 	</body>
 </html>
